@@ -25,11 +25,14 @@
         flex-direction: column;
         align-items: flex-end; /* Align image and caption to the right */
         margin-top: 20px; /* Add space between title and image */
+        animation: a 2s ease-out;
       }
       .cap {
         color: white;
         text-align: right; /* Align caption text to the right */
-        margin-top: 10px; /* Add space between image and caption */
+        margin-top: 5px; /* Add space between image and caption */
+        animation: a 2s ease-out;
+        margin-right: 4px;
       }
       img {
         max-width: 100%; /* Ensure the image doesn't overflow */
@@ -42,6 +45,14 @@
         }
         100% {
           transform: translateX(0);
+          opacity: 1;
+        }
+      }
+      @keyframes a {
+        0% {
+          opacity: 0;
+        }
+        100% {
           opacity: 1;
         }
       }
