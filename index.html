@@ -8,17 +8,32 @@
         margin: 0px;
         background: #000002;
         display: flex;
-        justify-content: center;
-        align-items: flex-start;
+        flex-direction: column;
+        align-items: flex-end; /* Align content to the right */
+        padding-right: 20px; /* Add some padding to avoid touching the edge */
       }
       .h1 {
         color: white;
         position: relative;
         animation: slidein 2.3s ease-out;
         margin-top: 20vh;
+        width: 100%; /* Ensure the title spans the full width */
+        text-align: center; /* Center the title */
+      }
+      .imagecap {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end; /* Align image and caption to the right */
+        margin-top: 20px; /* Add space between title and image */
       }
       .cap {
         color: white;
+        text-align: right; /* Align caption text to the right */
+        margin-top: 10px; /* Add space between image and caption */
+      }
+      img {
+        max-width: 100%; /* Ensure the image doesn't overflow */
+        height: auto; /* Maintain aspect ratio */
       }
       @keyframes slidein {
         0% {
@@ -38,10 +53,9 @@
     </div>
     <div class="imagecap">
       <img src="https://ia601300.us.archive.org/25/items/img-0714_20250305/IMG_0714.jpeg" alt="Workers operating a chain pump">
-    </img>
-    </div>
-    <div class="cap">
-      <p>Workers operating a chain pump.</p>
+      <div class="cap">
+        <p>Workers operating a chain pump.</p>
+      </div>
     </div>
   </body>
 </html>
