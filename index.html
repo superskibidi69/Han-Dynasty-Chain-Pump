@@ -4,25 +4,26 @@
     <title>Chain Pumps (Han Dynasty)</title>
     <style>
       body {
-      height: 100vh;
-      margin: 0px;
-      background: #000002;
-        justify-content: center;
-        align-items: center;
+        height: 100vh;
+        margin: 0px;
+        background: #000002;
         display: flex;
+        justify-content: center; /* Center horizontally */
+        align-items: flex-start; /* Align to the top vertically */
       }
       .h1 {
         color: white;
         position: relative;
-        animation: sladein 2s ease-in;
+        animation: slidein 2s ease-in;
+        margin-top: 10vh; /* Adjust this value to control vertical position */
       }
-      @keyframes sladein {
+      @keyframes slidein {
         0% {
-          left: -200px;
+          transform: translateX(-100%);
           opacity: 0;
         }
         100% {
-          left: 0px;
+          transform: translateX(0);
           opacity: 1;
         }
       }
