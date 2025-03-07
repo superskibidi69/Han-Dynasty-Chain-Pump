@@ -5,7 +5,7 @@
     <style>
       /* General Reset */
       body {
-        height: 100vh;
+        height: 200vh; /* Increased height for more scrolling */
         margin: 0;
         background: linear-gradient(135deg, #1a1a2e, #16213e);
         display: flex;
@@ -21,14 +21,14 @@
       .h1 {
         text-align: center;
         margin-bottom: 20px;
-        animation: slidein 2.3s ease-out;
       }
 
       .h1 h1 {
         font-size: 3rem;
         font-weight: bold;
-        color: #e94560;
+        color: #e94560; /* Initial color */
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        transition: color 0.5s ease; /* Smooth color transition */
       }
 
       /* Content Styling */
@@ -37,18 +37,19 @@
         text-align: justify;
         line-height: 1.6;
         margin-bottom: 30px;
-        animation: fadein 2.5s ease-out;
       }
 
       .what h2 {
         font-size: 2rem;
-        color: #00bcd4;
+        color: #00bcd4; /* Initial color */
         margin-bottom: 10px;
+        transition: color 0.5s ease; /* Smooth color transition */
       }
 
       .what p {
         font-size: 1.1rem;
-        color: #f0f0f0;
+        color: #f0f0f0; /* Initial color */
+        transition: color 0.5s ease; /* Smooth color transition */
       }
 
       /* Image and Caption Styling */
@@ -56,7 +57,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        animation: fadein 2.5s ease-out;
       }
 
       .imagecap img {
@@ -70,29 +70,9 @@
         text-align: center;
         margin-top: 10px;
         font-size: 1rem;
-        color: #f0f0f0;
+        color: #f0f0f0; /* Initial color */
         font-style: italic;
-      }
-
-      /* Animations */
-      @keyframes slidein {
-        0% {
-          transform: translateX(-100%);
-          opacity: 0;
-        }
-        100% {
-          transform: translateX(0);
-          opacity: 1;
-        }
-      }
-
-      @keyframes fadein {
-        0% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 1;
-        }
+        transition: color 0.5s ease; /* Smooth color transition */
       }
 
       /* Responsive Design */
@@ -131,5 +111,51 @@
         <p>This is what the chain pump looks like. Animals or people can drive pedals to rotate the chain.</p>
       </div>
     </div>
+
+    <script>
+      // Function to calculate scroll progress (0 to 1)
+      function getScrollProgress() {
+        const scrollTop = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+        const maxScroll = documentHeight - windowHeight;
+        return scrollTop / maxScroll;
+      }
+
+      // Function to update text color based on scroll progress
+      function updateTextColor() {
+        const progress = getScrollProgress();
+
+        // Define color ranges
+        const colors = [
+          { r: 233, g: 69, b: 96 },   // #e94560 (red)
+          { r: 0, g: 188, b: 212 },   // #00bcd4 (cyan)
+          { r: 240, g: 240, b: 240 }, // #f0f0f0 (white)
+        ];
+
+        // Interpolate between colors based on scroll progress
+        const colorIndex = Math.floor(progress * (colors.length - 1));
+        const nextColorIndex = Math.min(colorIndex + 1, colors.length - 1);
+        const blend = (progress * (colors.length - 1)) % 1;
+
+        const r = Math.round(colors[colorIndex].r + (colors[nextColorIndex].r - colors[colorIndex].r) * blend);
+        const g = Math.round(colors[colorIndex].g + (colors[nextColorIndex].g - colors[colorIndex].g) * blend);
+        const b = Math.round(colors[colorIndex].b + (colors[nextColorIndex].b - colors[colorIndex].b) * blend);
+
+        const newColor = `rgb(${r}, ${g}, ${b})`;
+
+        // Apply the new color to all text elements
+        document.querySelector('.h1 h1').style.color = newColor;
+        document.querySelectorAll('.what h2, .what p, .cap p').forEach((element) => {
+          element.style.color = newColor;
+        });
+      }
+
+      // Add scroll event listener
+      window.addEventListener('scroll', updateTextColor);
+
+      // Initial call to set initial color
+      updateTextColor();
+    </script>
   </body>
 </html>
