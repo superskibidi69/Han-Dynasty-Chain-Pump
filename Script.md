@@ -4,4 +4,4 @@ The chain pump simplified irrigation. It consists of square boards rotating on a
       
 Before the chain pump, farmers had to manually pull water using buckets. This invention simplified the process by requiring only manpower to operate a pedal, which rotates the chain. The square boards trap water, which is then emptied into an irrigation ditch, significantly improving agricultural efficiency.
 Here is an explanation:
-a farmer or an animals will drive on these pedals, which turns the biards.as it reaches the top, the water is emptied into an irrigation ditch. simple, and effective.
+a farmer or an animals will drive on these pedals, which turns the biards.as it reaches the top, the water is emptied into an irrigation ditch. simple, and effective. This makes a massive difference, because it uses less energy.
