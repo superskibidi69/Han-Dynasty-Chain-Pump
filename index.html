@@ -3,49 +3,78 @@
   <head>
     <title>Chain Pumps (Han Dynasty)</title>
     <style>
+      /* General Reset */
       body {
         height: 100vh;
-        margin: 0px;
-        background: #000002;
+        margin: 0;
+        background: linear-gradient(135deg, #1a1a2e, #16213e);
         display: flex;
         flex-direction: column;
-        align-items: flex-end; /* Align content to the right */
-        padding-right: 20px; /* Add some padding to avoid touching the edge */
+        align-items: center;
+        justify-content: center;
+        font-family: 'Arial', sans-serif;
+        color: white;
+        padding: 20px;
       }
+
+      /* Title Styling */
       .h1 {
-        color: white;
-        position: relative;
+        text-align: center;
+        margin-bottom: 20px;
         animation: slidein 2.3s ease-out;
-        margin-top: 20vh;
-        width: 100%; /* Ensure the title spans the full width */
-        text-align: center; /* Center the title */
       }
-       .what {
-        color: white;
-        position: relative;
-        width: 100%;
-         text-wrap: wrap;
-         margin-left: 30px;
-       }
+
+      .h1 h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #e94560;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Content Styling */
+      .what {
+        max-width: 800px;
+        text-align: justify;
+        line-height: 1.6;
+        margin-bottom: 30px;
+        animation: fadein 2.5s ease-out;
+      }
+
+      .what h2 {
+        font-size: 2rem;
+        color: #00bcd4;
+        margin-bottom: 10px;
+      }
+
+      .what p {
+        font-size: 1.1rem;
+        color: #f0f0f0;
+      }
+
+      /* Image and Caption Styling */
       .imagecap {
         display: flex;
         flex-direction: column;
-        align-items: flex-end; /* Align image and caption to the right */
-        margin-top: 20px; /* Add space between title and image */
-        animation: a 2.5s ease-out;
+        align-items: center;
+        animation: fadein 2.5s ease-out;
       }
+
+      .imagecap img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
       .cap {
-        color: white;
-        text-align: right; /* Align caption text to the right */
-        margin-top: 5px; /* Add space between image and caption */
-        animation: a 2.5s ease-out;
-        margin-right: 4px;
-        text-wrap: wrap;
+        text-align: center;
+        margin-top: 10px;
+        font-size: 1rem;
+        color: #f0f0f0;
+        font-style: italic;
       }
-      img {
-        max-width: 100%; /* Ensure the image doesn't overflow */
-        height: auto; /* Maintain aspect ratio */
-      }
+
+      /* Animations */
       @keyframes slidein {
         0% {
           transform: translateX(-100%);
@@ -56,7 +85,8 @@
           opacity: 1;
         }
       }
-      @keyframes a {
+
+      @keyframes fadein {
         0% {
           opacity: 0;
         }
@@ -64,17 +94,36 @@
           opacity: 1;
         }
       }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .h1 h1 {
+          font-size: 2rem;
+        }
+
+        .what h2 {
+          font-size: 1.5rem;
+        }
+
+        .what p {
+          font-size: 1rem;
+        }
+      }
     </style>
   </head>
   <body>
     <div class="h1">
-      <h1>Chain pumps in the Han Dynasty</h1>
+      <h1>Chain Pumps in the Han Dynasty</h1>
     </div>
     <div class="what">
-      <h2>What is the chain pump?</h2>
-      <p>Chain pumps is totally my new invention. It consists of square boards rotating on a circlular chain.</p>
-    <h2>Why is this important, and how does it work?</h2>
-      <p>Farmers used to have to pull water with buckets before this innovation. With this tool, they only need manpower for pulling a pedal, which rotates everything on the chain, and the square boards trap water, which is emptied into an irrigation ditch.</p>
+      <h2>What is the Chain Pump?</h2>
+      <p>
+        The chain pump is an ancient innovation that revolutionized irrigation. It consists of square boards rotating on a circular chain, allowing for efficient water transportation.
+      </p>
+      <h2>Why is this Important, and How Does it Work?</h2>
+      <p>
+        Before the chain pump, farmers had to manually pull water using buckets. This invention simplified the process by requiring only manpower to operate a pedal, which rotates the chain. The square boards trap water, which is then emptied into an irrigation ditch, significantly improving agricultural efficiency.
+      </p>
     </div>
     <div class="imagecap">
       <img src="https://ia601300.us.archive.org/25/items/img-0714_20250305/IMG_0714.jpeg" alt="Workers operating a chain pump">
