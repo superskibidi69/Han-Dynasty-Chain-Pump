@@ -1,161 +1,220 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Chain Pumps (Han Dynasty)</title>
-    <style>
-      /* General Reset */
-      body {
-        height: 200vh; /* Increased height for more scrolling */
-        margin: 0;
-        background: linear-gradient(135deg, #1a1a2e, #16213e);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Arial', sans-serif;
-        color: white;
-        padding: 20px;
-      }
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chain Pumps: Han Dynasty Innovation</title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-      /* Title Styling */
-      .h1 {
-        text-align: center;
-        margin-bottom: 20px;
-      }
+    body {
+      min-height: 200vh;
+      background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #16213e);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      overflow-x: hidden;
+      user-select: none;
+      scrollbar-width: none; /* For Firefox */
+    }
 
+    /* Hide scrollbar for Chrome, Safari, and Opera */
+    body::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge, and Firefox */
+    body {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Title Styling */
+    .h1 {
+      text-align: center;
+      margin: 100px 0 50px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+      word-wrap: break-word; /* Text wrapping */
+    }
+
+    .h1 h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      background: linear-gradient(45deg, #e94560, #00bcd4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    /* Content Styling */
+    .what {
+      max-width: 800px;
+      margin: 0 auto 50px;
+      padding: 0 20px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+      word-wrap: break-word; /* Text wrapping */
+    }
+
+    .what h2 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      color: #00bcd4;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+      word-wrap: break-word; /* Text wrapping */
+    }
+
+    .what p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #f0f0f0;
+      margin-bottom: 20px;
+      word-wrap: break-word; /* Text wrapping */
+    }
+
+    /* Image and Caption Styling */
+    .imagecap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 50px 0;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 1s ease, transform 1s ease;
+      word-wrap: break-word; /* Text wrapping */
+    }
+
+    .imagecap img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+      cursor: pointer; /* Add pointer cursor to indicate clickability */
+    }
+
+    .imagecap img.zoomed {
+      transform: scale(2); /* Zoom effect */
+      z-index: 10; /* Bring the image to the front */
+      position: relative;
+    }
+
+    .imagecap img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+    }
+
+    .cap {
+      text-align: center;
+      margin-top: 340px; /* Increased margin to move caption further down */
+      font-size: 1.1rem;
+      color: #f0f0f0;
+      font-style: italic;
+      text-decoration: wavy;
+      text-wrap: wrap;
+    }
+
+    /* Scroll Animations */
+    .fade-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
       .h1 h1 {
-        font-size: 3rem;
-        font-weight: bold;
-        color: #e94560; /* Initial color */
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        transition: color 0.5s ease; /* Smooth color transition */
-      }
-
-      /* Content Styling */
-      .what {
-        max-width: 800px;
-        text-align: justify;
-        line-height: 1.6;
-        margin-bottom: 30px;
+        font-size: 2.5rem;
       }
 
       .what h2 {
         font-size: 2rem;
-        color: #00bcd4; /* Initial color */
-        margin-bottom: 10px;
-        transition: color 0.5s ease; /* Smooth color transition */
       }
 
       .what p {
-        font-size: 1.1rem;
-        color: #f0f0f0; /* Initial color */
-        transition: color 0.5s ease; /* Smooth color transition */
-      }
-
-      /* Image and Caption Styling */
-      .imagecap {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .imagecap img {
-        max-width: 100%;
-        height: auto;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-      }
-
-      .cap {
-        text-align: center;
-        margin-top: 10px;
         font-size: 1rem;
-        color: #f0f0f0; /* Initial color */
-        font-style: italic;
-        transition: color 0.5s ease; /* Smooth color transition */
       }
 
-      /* Responsive Design */
-      @media (max-width: 768px) {
-        .h1 h1 {
-          font-size: 2rem;
-        }
-
-        .what h2 {
-          font-size: 1.5rem;
-        }
-
-        .what p {
-          font-size: 1rem;
-        }
+      .imagecap img.zoomed {
+        transform: scale(1.5); /* Adjust zoom level for smaller screens */
       }
-    </style>
-  </head>
-  <body>
-    <div class="h1">
-      <h1>Chain Pumps in the Han Dynasty</h1>
+    }
+  </style>
+</head>
+<body>
+  <div class="h1">
+    <h1>Chain Pumps in the Han Dynasty</h1>
+  </div>
+  <div class="what">
+    <h2>What is the Chain Pump?</h2>
+    <p>
+      The chain pump is an innovation that revolutionized irrigation. It consists of square boards rotating on a circular chain, allowing for efficient water transportation.
+    </p>
+    <h2>Why is this important, and how does it work?</h2>
+    <p>
+      Before the chain pump, farmers had to manually pull water using buckets. This invention simplified the process by requiring only manpower to operate a pedal, which rotates the chain. The square boards trap water, which is then emptied into an irrigation ditch, significantly improving agricultural efficiency.
+    </p>
+  </div>
+  <div class="imagecap">
+    <img src="https://ia601300.us.archive.org/25/items/img-0714_20250305/IMG_0714.jpeg" alt="Workers operating a chain pump">
+    <div class="cap">
+      <p>This is what the chain pump looks like. Animals or people can drive pedals to rotate the chain.</p>
     </div>
-    <div class="what">
-      <h2>What is the Chain Pump?</h2>
-      <p>
-        The chain pump is an innovation that revolutionized irrigation. It consists of square boards rotating on a circular chain, allowing for efficient water transportation.
-      </p>
-      <h2>Why is this important, and how does it work?</h2>
-      <p>
-        Before the chain pump, farmers had to manually pull water using buckets. This invention simplified the process by requiring only manpower to operate a pedal, which rotates the chain. The square boards trap water, which is then emptied into an irrigation ditch, significantly improving agricultural efficiency.
-      </p>
-    </div>
-    <div class="imagecap">
-      <img src="https://ia601300.us.archive.org/25/items/img-0714_20250305/IMG_0714.jpeg" alt="Workers operating a chain pump">
-      <div class="cap">
-        <p>This is what the chain pump looks like. Animals or people can drive pedals to rotate the chain.</p>
-      </div>
-    </div>
+  </div>
 
-    <script>
-      // Function to calculate scroll progress (0 to 1)
-      function getScrollProgress() {
-        const scrollTop = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-        const maxScroll = documentHeight - windowHeight;
-        return scrollTop / maxScroll;
-      }
+  <script>
+    // Scroll Animation
+    const fadeElements = document.querySelectorAll('.h1, .what, .imagecap');
 
-      // Function to update text color based on scroll progress
-      function updateTextColor() {
-        const progress = getScrollProgress();
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in');
+        }
+      });
+    }, { threshold: 0.5 });
 
-        // Define color ranges
-        const colors = [
-          { r: 233, g: 69, b: 96 },   // #e94560 (red)
-          { r: 0, g: 188, b: 212 },   // #00bcd4 (cyan)
-          { r: 240, g: 240, b: 240 }, // #f0f0f0 (white)
-        ];
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
 
-        // Interpolate between colors based on scroll progress
-        const colorIndex = Math.floor(progress * (colors.length - 1));
-        const nextColorIndex = Math.min(colorIndex + 1, colors.length - 1);
-        const blend = (progress * (colors.length - 1)) % 1;
+    // Parallax Effect
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      const h1 = document.querySelector('.h1 h1');
+      const image = document.querySelector('.imagecap img');
 
-        const r = Math.round(colors[colorIndex].r + (colors[nextColorIndex].r - colors[colorIndex].r) * blend);
-        const g = Math.round(colors[colorIndex].g + (colors[nextColorIndex].g - colors[colorIndex].g) * blend);
-        const b = Math.round(colors[colorIndex].b + (colors[nextColorIndex].b - colors[colorIndex].b) * blend);
+      h1.style.transform = `translateY(${scrollY * 0.5}px)`;
+      image.style.transform = `translateY(${scrollY * 0.3}px)`;
+    });
 
-        const newColor = `rgb(${r}, ${g}, ${b})`;
-
-        // Apply the new color to all text elements
-        document.querySelector('.h1 h1').style.color = newColor;
-        document.querySelectorAll('.what h2, .what p, .cap p').forEach((element) => {
-          element.style.color = newColor;
-        });
-      }
-
-      // Add scroll event listener
-      window.addEventListener('scroll', updateTextColor);
-
-      // Initial call to set initial color
-      updateTextColor();
-    </script>
-  </body>
+    // Image Zoom on Click
+    const image = document.querySelector('.imagecap img');
+    image.addEventListener('click', () => {
+      console.log('Image clicked!'); // Debugging: Check if the click event is firing
+      image.classList.toggle('zoomed');
+    });
+  </script>
+</body>
 </html>
