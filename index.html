@@ -166,6 +166,32 @@
       transform: translateY(0);
     }
 
+    /* Toggle Sound Button */
+    #toggleSound {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #00ffcc;
+      color: #0f0c29;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      z-index: 1000;
+    }
+
+    #toggleSound:hover {
+      background-color: #ff00ff;
+      color: #f0f0f0;
+    }
+
+    /* Hide Audio Element */
+    audio {
+      display: none;
+    }
+
     /* Responsive Design */
     @media (max-width: 768px) {
       .h1 h1 {
@@ -185,6 +211,7 @@
 </head>
 <body>
   <div class="floating-bg"></div>
+  <button id="toggleSound">Toggle Sound</button>
   <div class="h1">
     <h1>Chain Pumps in the Han Dynasty</h1>
   </div>
@@ -204,9 +231,9 @@
       <p>This is what the chain pump looks like. Animals or people can drive pedals to rotate the chain.</p>
     </div>
   </div>
-<audio controls autoplay loop>
-  <source src="https://ia600807.us.archive.org/35/items/chinese-music-imperial-dynasty-ezmp-3.cc/Chinese%20Music%20–%20Imperial%20Dynasty%20%5B%20ezmp3.cc%20%5D.mp3">
-</audio>
+  <audio id="backgroundMusic" controls autoplay loop>
+    <source src="https://ia600807.us.archive.org/35/items/chinese-music-imperial-dynasty-ezmp-3.cc/Chinese%20Music%20–%20Imperial%20Dynasty%20%5B%20ezmp3.cc%20%5D.mp3" type="audio/mpeg">
+  </audio>
   <script>
     // Scroll Animation
     const fadeElements = document.querySelectorAll('.h1, .what, .imagecap');
@@ -233,6 +260,20 @@
       h1.style.transform = `translateY(${scrollY * 0.5}px)`;
       what.style.transform = `translateY(${scrollY * 0.3}px)`;
       imagecap.style.transform = `translateY(${scrollY * 0.2}px)`;
+    });
+
+    // Toggle Sound Button
+    const toggleSoundButton = document.getElementById('toggleSound');
+    const backgroundMusic = document.getElementById('backgroundMusic');
+
+    toggleSoundButton.addEventListener('click', () => {
+      if (backgroundMusic.paused) {
+        backgroundMusic.play();
+        toggleSoundButton.textContent = 'Mute Sound';
+      } else {
+        backgroundMusic.pause();
+        toggleSoundButton.textContent = 'Play Sound';
+      }
     });
   </script>
 </body>
